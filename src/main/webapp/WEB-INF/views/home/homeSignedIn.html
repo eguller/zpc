@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{view.index.title}">Welcome!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen"
+          th:href="@{/resources/css/bootstrap.min.css}"/>
+    <link href="../../../resources/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen"
+          th:href="@{/resources/css/bootstrap-datetimepicker.min.css}"/>
+    <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}"/>
+    <script src="../../../resources/js/jquery.min.js" th:src="@{/resources/js/jquery.min.js}"></script>
+    <script src="../../../resources/js/moment.min.js.js" th:src="@{/resources/js/moment.min.js}"></script>
+    <script src="../../../resources/js/transition.js" th:src="@{/resources/js/transition.js}"></script>
+    <script src="../../../resources/js/collapse.js" th:src="@{/resources/js/collapse.js}"></script>
+    <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
+    <script src="../../../resources/js/bootstrap-datetimepicker.min.js"
+            th:src="@{/resources/js/bootstrap-datetimepicker.min.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/layout :: header"></div>
+<div class="container">
+    <form class="form-medium" action="#" method="get" th:action="@{/rate}">
+        <legend>Currency Converter</legend>
+        <div class="form-group">
+            <label for="sourceCurrency">From: </label>
+            <select id="sourceCurrency" name="sourceCurrency">
+                <option th:each="currency : ${currencies}"
+                        th:value="${currency.symbol}"
+                        th:text="${currency.symbol + ' - ' + currency.name}"
+                        th:selected="${currency.symbol == sourceCurrency}"
+                ></option>
+            </select>
+            <label for="targetCurrency" style="padding-left: 25px;"> To: </label>
+            <select id="targetCurrency" name="targetCurrency">
+                <option th:each="currency : ${currencies}"
+                        th:value="${currency.symbol}"
+                        th:text="${currency.symbol + ' - ' + currency.name}"
+                        th:selected="${currency.symbol == targetCurrency}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="rateDate">When: </label>
+            <div class="input-group date col-md-5" id="historicalRate">
+                <input class="form-control" size="16" type="text" name="rateDate">
+                <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+            <input type="submit" value="Convert" class="btn btn-primary pull-right"/>
+        </div>
+    </form>
+    <div class="form-medium" th:if="${rate != null}" style="text-align: center">
+        <h1 th:text="${'1 ' + sourceCurrency +' = ' + rate.rate + ' ' + targetCurrency}"/>
+    </div>
+
+    <div class="form-medium" th:if="${not #lists.isEmpty(history)}">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Previous Queries</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="historyItem : ${history}">
+                <td th:if="${historyItem.historicLookup}"
+                    th:text="${'1 ' + historyItem.sourceCurrency + ' = ' + historyItem.rate + ' ' + historyItem.targetCurrency + ' on ' + #calendars.format(historyItem.rateDate,'dd MMMM yyyy')}"></td>
+                <td th:unless="${historyItem.historicLookup}"
+                    th:text="${'1 ' + historyItem.sourceCurrency + ' = ' + historyItem.rate + ' ' + historyItem.targetCurrency + ' at ' + #calendars.format(historyItem.rateDate,'dd MMMM yyyy HH:mm')}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:replace="fragments/layout :: footer"></div>
+
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('#historicalRate').datetimepicker({
+            format: 'DD/MM/YYYY'
+        });
+    });
+</script>
+</body>
+</html>
