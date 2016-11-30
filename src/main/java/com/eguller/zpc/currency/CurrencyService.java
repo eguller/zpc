@@ -12,7 +12,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * (comment)
+ * Service to define new currencies or load existing currencies in the system.
  *
  * @author eguller
  */
@@ -40,6 +40,11 @@ public class CurrencyService {
         currencyRepository.save(currency);
     }
 
+    /**
+     * All currencies which can be used in the system.
+     *
+     * @return - all currencies
+     */
     public Set<Currency> getAllCurrencies(){
         return Collections.unmodifiableSet(new HashSet<>(currencyRepository.findAll()));
     }

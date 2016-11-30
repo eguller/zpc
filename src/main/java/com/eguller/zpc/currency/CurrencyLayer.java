@@ -4,13 +4,13 @@ import java.util.Date;
 import java.util.Set;
 
 /**
- * (comment)
+ * Currency Layer implementation as rate provider.
  *
  * @author eguller
  */
 public class CurrencyLayer implements RateProvider {
     @Override
-    public Set<Rate> getHistoricalRate(String sourceCcy, Set<String> targetCcy, Date date) {
+    public Set<Rate> getHistoricalRate(String sourceCcy, Set<String> targetCurrencies, Date date) {
         return null;
     }
 

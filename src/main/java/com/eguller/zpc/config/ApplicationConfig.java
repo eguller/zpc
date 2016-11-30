@@ -1,18 +1,19 @@
 package com.eguller.zpc.config;
 
+import com.eguller.zpc.Application;
 import com.eguller.zpc.currency.OpenExchangeRates;
 import com.eguller.zpc.currency.RateProvider;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
-import com.eguller.zpc.Application;
-
-import javax.annotation.PostConstruct;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Set;
-
+/**
+ * Main application configuration.
+ *
+ * @author eguller
+ */
 @Configuration
 @PropertySource("classpath:persistence.properties")
 @PropertySource("classpath:application.properties")

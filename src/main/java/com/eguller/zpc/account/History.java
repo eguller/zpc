@@ -8,7 +8,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * (comment)
+ * Historical record of currency conversion requests.
+ * Records older than latest 10 are deleted periodically.
  *
  * @author eguller
  */
@@ -18,18 +19,18 @@ import java.util.Date;
 public class History {
     @Id
     @GeneratedValue
-    Long id;
-    String sourceCurrency;
-    String targetCurrency;
-    Date rateDate;
+    private Long id;
+    private String sourceCurrency;
+    private String targetCurrency;
+    private Date rateDate;
     @Column(precision = 19, scale = 4)
-    BigDecimal rate;
+    private BigDecimal rate;
     @Column(name = "requestTime", updatable = false)
-    Date requestTime;
+    private Date requestTime;
     @ManyToOne
     @JoinColumn(name = "account_id")
-    Account account;
-    boolean historicLookup;
+    private Account account;
+    private boolean historicLookup;
 
 
     protected History() {

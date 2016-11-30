@@ -7,7 +7,8 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 /**
- * Created by eguller on 11/17/16.
+ * Validates whether given email adress already exists in the system or not.
+ * @author eguller
  */
 @Component
 class EmailExistsValidator implements ConstraintValidator<EmailExists, String> {

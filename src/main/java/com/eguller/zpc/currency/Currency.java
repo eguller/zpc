@@ -3,7 +3,7 @@ package com.eguller.zpc.currency;
 import javax.persistence.*;
 
 /**
- * (comment)
+ * Currency entity.
  *
  * @author eguller
  */

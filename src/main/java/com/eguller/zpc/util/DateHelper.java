@@ -1,13 +1,12 @@
 package com.eguller.zpc.util;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 /**
- * (comment)
+ * Utility method for all date parsing, formatting and calculations.
  *
  * @author eguller
  */

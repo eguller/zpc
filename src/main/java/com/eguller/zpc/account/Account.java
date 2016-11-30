@@ -1,11 +1,15 @@
 package com.eguller.zpc.account;
 
-import javax.persistence.*;
-
-import java.time.Instant;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.persistence.*;
+import java.time.Instant;
+
+/**
+ * Details of requesting user.
+ *
+ * @author eguller
+ */
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "account")

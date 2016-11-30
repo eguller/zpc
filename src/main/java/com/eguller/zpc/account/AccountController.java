@@ -2,12 +2,15 @@ package com.eguller.zpc.account;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.security.Principal;
 
-@RestController
+@Controller
 public class AccountController {
 
     private final AccountRepository accountRepository;

@@ -2,7 +2,6 @@ package com.eguller.zpc.currency;
 
 import com.eguller.zpc.client.RestClient;
 import com.eguller.zpc.util.DateHelper;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.exception.ContextedRuntimeException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,7 +12,9 @@ import java.math.RoundingMode;
 import java.util.*;
 
 /**
- * Created by eguller on 11/20/16.
+ * Open Exchange rates implementation as rate provide.
+ *
+ * @author eguller
  */
 
 @PropertySource("classpath:application.properties")

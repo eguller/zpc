@@ -4,7 +4,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * (comment)
+ * Rest client configuration.
+ * Different client implementations can used
+ * by changing factory method.
  *
  * @author eguller
  */

@@ -1,6 +1,5 @@
 package com.eguller.zpc.client;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.client.BufferingClientHttpRequestFactory;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
@@ -8,17 +7,18 @@ import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * (comment)
+ * Rest client implementation to communicate external
+ * currency converter services.
  *
  * @author eguller
  */
-public class RestTemplateClient implements RestClient {
+class RestTemplateClient implements RestClient {
     private static final int CONNECTION_REQUEST_TIMEOUT = 1000;
     private static final int CONNECT_TIMOUT = 1000;
     private static final int READ_TIMEOUT = 5000; //
     private final RestTemplate restTemplate;
 
-    public RestTemplateClient() {
+    RestTemplateClient() {
         HttpComponentsClientHttpRequestFactory httpRequestFactory = new HttpComponentsClientHttpRequestFactory();
         httpRequestFactory.setConnectionRequestTimeout(CONNECTION_REQUEST_TIMEOUT);
         httpRequestFactory.setConnectTimeout(CONNECT_TIMOUT);
