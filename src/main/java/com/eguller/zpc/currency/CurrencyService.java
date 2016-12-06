@@ -1,6 +1,7 @@
 package com.eguller.zpc.currency;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
@@ -45,6 +46,7 @@ public class CurrencyService {
      *
      * @return - all currencies
      */
+    @Cacheable("currencies")
     public Set<Currency> getAllCurrencies(){
         return Collections.unmodifiableSet(new HashSet<>(currencyRepository.findAll()));
     }

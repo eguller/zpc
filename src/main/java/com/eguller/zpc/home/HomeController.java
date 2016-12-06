@@ -6,6 +6,7 @@ import com.eguller.zpc.account.History;
 import com.eguller.zpc.currency.ConverterService;
 import com.eguller.zpc.currency.CurrencyService;
 import com.eguller.zpc.currency.Rate;
+import com.eguller.zpc.util.DateHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.Authentication;
@@ -72,7 +73,7 @@ class HomeController {
         model.addAttribute("rateDate", rateDate);
 
         Rate rate;
-        if(rateDate.isPresent()){
+        if (rateDate.isPresent() && !DateHelper.isToday(rateDate.get())) {
             rate = converterService.getHistoricalRate(sourceCurrency, targetCurrency, rateDate.get());
             model.addAttribute("rateDate", formatter.format(rateDate.get().toInstant()));
         } else {

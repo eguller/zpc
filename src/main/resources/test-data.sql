@@ -1,2 +1,0 @@
-insert into account('email', 'password', 'role') values('user1', '$2a$10$SPDrkqo1KS8jeUq9sNmFkOFpWivO856utB0qVYmmZHRE.SUYbwCDq', 'ROLE_USER');
-insert into account('email', 'password', 'role') values('admin1', '123456', 'ROLE_ADMIN');

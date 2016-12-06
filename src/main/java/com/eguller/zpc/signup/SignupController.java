@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * New user account creation.
@@ -45,5 +47,10 @@ class SignupController {
         accountService.signin(account);
         MessageHelper.addSuccessAttribute(ra, "signup.success");
         return "redirect:/";
+    }
+
+    @GetMapping("countries")
+    List<String> countries() {
+        return new ArrayList<>();
     }
 }
