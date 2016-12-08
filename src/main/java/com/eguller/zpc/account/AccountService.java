@@ -16,7 +16,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.PostConstruct;
 import java.util.Collections;
 
 /**
@@ -40,12 +39,6 @@ public class AccountService implements UserDetailsService {
         account.setPassword(passwordEncoder.encode(account.getPassword()));
         accountRepository.save(account);
         return account;
-    }
-
-    @PostConstruct
-    protected void initialize() {
-        save(new Account("user", "demo", "ROLE_USER"));
-        save(new Account("admin", "admin", "ROLE_ADMIN"));
     }
 
     @Override
